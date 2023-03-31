@@ -39,29 +39,14 @@ const StyledButton = styled.button`
     margin-left: 1rem;
   }
 `;
-const LS_KEY_ID = "LS_KEY_ID";
-const LS_KEY_SAVE_ID_FLAG = "LS_KEY_SAVE_ID_FLAG";
-function inputReducer(state, action) {
-  return {
-    ...state,
-    [action.id]: action.value,
-  };
-}
-function LoginComponent(){
-  const [state, dispatch] = useReducer(inputReducer, {
-    loginID: "",
-    loginPassword: "",
-  });
-  const { loginID, setloginID } = useState("");
-  const {loginPassword, setloginPassword}= useState("");
 
-  const [saveIDFlag, setSaveIDFlag] = useState(false);
-  const [passwordOption, setPasswordOption] = useState(false);
+function LoginComponent(){
+  const [loginID, setLoginID] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
   const [passwordInputType, setPasswordInputType] = useState({
     type: "password",
     autoComplete: "current-password",
   });
-
   const dataRuleCheckForID = (ch) => {
     let ascii = ch.charCodeAt(0);
     if (48 /* 0 */ <= ascii && ascii <= 57 /* 9 */) return true;
@@ -72,17 +57,17 @@ function LoginComponent(){
     return false;
   };
   const getLoginID = (event) => {
-    setloginID = event.target.value;
+    let value = event.target.value;
 
-    if (loginID === "") {
-      dispatch(event.target);
+    if (value === "") {
+      setLoginID(value);
       return;
     }
 
-    let length = loginID.length;
+    let length = value.length;
     if (dataRuleCheckForID(value[length - 1]) === false) return;
-
-    dispatch(event.target);
+   
+    setLoginID(value);
 
     return;
   };
@@ -92,48 +77,17 @@ function LoginComponent(){
     console.log({ loginID, loginPassword });
 
     if (loginID === "") {
-      alert("아이디를 입력해주세요."); return;
+      alert("아이디를 입력해주세요.");
     }
-
     if (loginPassword === "") {
-      alert("비밀번호를 입력해주세요."); return;
-    }
-
-    if (true /* login fail */) {
-      alert("아이디 혹은 패스워드가 틀립니다.");
-      dispatch({ id: "loginID", value: "" });
-      dispatch({ id: "loginPassword", value: "" });
-      localStorage.setItem(LS_KEY_ID, "");
-
-      return;
+      alert("비밀번호를 입력해주세요.");
     }
 
     if (true /* login success */) {
-      if (saveIDFlag) localStorage.setItem(LS_KEY_ID, loginID);
+      
     }
   };
-  useEffect(() => {
 
-    let idFlag = JSON.parse(localStorage.getItem(LS_KEY_SAVE_ID_FLAG));
-    if (idFlag !== null) setSaveIDFlag(idFlag);
-    if (idFlag === false) localStorage.setItem(LS_KEY_ID, "");
-
-    let data = localStorage.getItem(LS_KEY_ID);
-    if (data !== null) dispatch({ id: "loginID", value: data });
-  }, []);
-
-  useEffect(() => {
-    if (passwordOption === false)
-      setPasswordInputType({
-        type: "password",
-        autoComplete: "current-password",
-      });
-    else
-      setPasswordInputType({
-        type: "text",
-        autoComplete: "off",
-      });
-  }, [passwordOption]);
     return (
         <>
         <form>
@@ -145,7 +99,7 @@ function LoginComponent(){
                 name="ID"
                 placeholder="ID" 
                 value={loginID} 
-                onChange={(e)=>getLoginID}></input>
+                onChange={(e) => getLoginID(e)}></input>
                 <br/>
                 <br/>
                 <input 
@@ -155,7 +109,7 @@ function LoginComponent(){
                 placeholder="Password"
                 autoComplete={passwordInputType.autoComplete}
                 value={loginPassword}
-                onChange={(e)=>dispatch(e.target)}></input>
+                onChange={(e) => setLoginPassword(e.target.value)}></input>
                 <br/>
                 <br/>
                 <StyledButton type="button" onClick={login}>Login</StyledButton>
