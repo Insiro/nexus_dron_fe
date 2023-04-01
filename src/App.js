@@ -1,6 +1,6 @@
 import './index.css';
-import Login from './components/login';
-import Register from './components/register';
+import Login from './pages/singIn';
+import Register from './pages/register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CenterLayout } from './components/layout';
 
