@@ -1,9 +1,9 @@
 import './index.css';
 import Login from './pages/singIn';
 import Register from './pages/register';
-import Cards from "./components/Cards";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { CenterLayout } from './components/layout';
+import { Drons } from './pages/drons';
 
 function App() {
     return (
@@ -14,7 +14,7 @@ function App() {
                         <Route path="/auth" element={<Login />} />
                         <Route path="/auth/register" element={<Register />} />
                     </Route>
-                    <Route path="/" element={<Cards />}>
+                    <Route path="/" element={<Drons />} />
                 </Routes>
             </BrowserRouter>
         </div>
