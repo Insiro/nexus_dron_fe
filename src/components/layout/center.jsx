@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { LayoutWrapper } from './wrapper';
 import { Outlet } from 'react-router';
 /**@param {string} direction */
 const CenterWrapper = styled.div`
@@ -9,13 +10,6 @@ const CenterWrapper = styled.div`
 
 const CenterBoundBox = styled.div`
     flex-grow: 1;
-`;
-
-/**@param {} css */
-const LayoutWrapper = styled.div`
-    height: 100%;
-    width: 100%;
-    ${(props) => (props.css ? props.css : '')}
 `;
 
 export const CenterLayout = ({ children, css }) => {

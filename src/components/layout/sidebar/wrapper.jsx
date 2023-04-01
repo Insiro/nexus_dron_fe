@@ -1,0 +1,19 @@
+import styled from 'styled-components';
+import * as styles from '../../styles';
+
+export const SideBarWrapper = styled.div`
+    z-index: 20;
+    ${styles.TRANSITION_SLOW}
+    transition-property: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 256px;
+    ${styles.MEDIAQUERY_UNDER_R} {
+        left: -256px;
+        body.sidebar-opened & {
+            left: 0;
+        }
+    }
+`;

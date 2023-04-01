@@ -1,3 +1,4 @@
 import { CenterLayout } from './center';
+import { NormalLayout } from './normal';
 
-export { CenterLayout };
+export { CenterLayout, NormalLayout };

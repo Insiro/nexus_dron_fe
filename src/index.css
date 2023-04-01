@@ -1,33 +1,39 @@
+html,
+#root,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    width: 100%;
+}
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
 }
 
-.map-contatiner{
-  width: 100%;
-  height: 50vh;
+.map-contatiner {
+    width: 100%;
+    height: 50vh;
 }
 
 .cards {
-    padding: 1rem ;
+    padding: 1rem;
     background: #808080;
     height: 100%;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
-  }
-  
-  .cards__container {
+}
+
+.cards__container {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -35,27 +41,27 @@ code {
     width: 90%;
     height: 100%;
     margin: 0 auto;
-  }
-  
-  .cards__wrapper {
+}
+
+.cards__wrapper {
     position: relative;
     margin: 50px 0 45px;
     width: 100%;
-  }
-  
-  .cards__items {
+}
+
+.cards__items {
     margin-bottom: 24px;
     width: 100%;
-  }
-  
-  .cards__item {
+}
+
+.cards__item {
     display: flex;
     flex: 1;
     margin: 0 1rem;
     border-radius: 10px;
-  }
-  
-  .cards__item__link {
+}
+
+.cards__item__link {
     display: flex;
     flex-flow: column;
     background: #fff;
@@ -66,21 +72,21 @@ code {
     border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
-  }
-  
-  .cards__item__pic-wrap {
+}
+
+.cards__item__pic-wrap {
     position: relative;
     width: 100%;
     padding-top: 67%;
     overflow: hidden;
-  }
-  
-  .fade-img {
+}
+
+.fade-img {
     animation-name: fade-img;
     animation-duration: 2s;
-  }
-  
-  .cards__item__pic-wrap::after {
+}
+
+.cards__item__pic-wrap::after {
     content: attr(data-category);
     position: absolute;
     bottom: 0;
@@ -92,75 +98,75 @@ code {
     color: #fff;
     background-color: #1f98f4;
     box-sizing: border-box;
-  }
-  
-  .cards__item__img {
+}
+
+.cards__item__img {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     padding: 20px;
-    width:40%;
+    width: 40%;
     height: 100%;
     object-fit: cover;
     transition: all 0.2s linear;
-  }
-  
-  .cards__item__img:hover {
+}
+
+.cards__item__img:hover {
     transform: scale(1.1);
-  }
-  
-  .cards__item__info {
+}
+
+.cards__item__info {
     padding: 20px 30px 30px;
-  }
-  
-  .cards__item__text {
+}
+
+.cards__item__text {
     color: #252e48;
     font-size: 18px;
     line-height: 24px;
-  }
+}
 
-  .cards_Drone_info {
-    display:flex;
+.cards_Drone_info {
+    display: flex;
     align-items: center;
     margin-bottom: 0.5em;
     border-radius: 1em;
     padding: 0.5em 0;
-    box-shadow:6px 6px 8px 0px makerShadow;
+    box-shadow: 6px 6px 8px 0px makerShadow;
     max-width: 30rem;
     width: 100%;
     background-color: makerDark;
     color: makerWhite;
-  }
-  
-  .Drone_text {
+}
+
+.Drone_text {
     color: #252e48;
     font-size: 18px;
     line-height: 24px;
     padding: 10px 10px 10px;
-  }
+}
 
-  .Drone_ID {
+.Drone_ID {
     color: #252e48;
     font-size: 25px;
     line-height: 31px;
     padding: 10px 10px 10px;
-  }
-  
-  @media only screen and (min-width: 1200px) {
+}
+
+@media only screen and (min-width: 1200px) {
     .content__blog__container {
-      width: 84%;
+        width: 84%;
     }
-  }
-  
-  @media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (min-width: 1024px) {
     .cards__items {
-      display: flex;
+        display: flex;
     }
-  }
-  
-  @media only screen and (max-width: 1024px) {
+}
+
+@media only screen and (max-width: 1024px) {
     .cards__item {
-      margin-bottom: 2rem;
+        margin-bottom: 2rem;
     }
-  }
+}
