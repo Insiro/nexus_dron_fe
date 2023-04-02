@@ -8,8 +8,9 @@ export const SideBarWrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
+    bottom: 17%;
     width: 256px;
+    overflow-y: auto;
     ${styles.MEDIAQUERY_UNDER_R} {
         left: -256px;
         body.sidebar-opened & {
