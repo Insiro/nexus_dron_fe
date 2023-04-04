@@ -6,7 +6,7 @@ export const Drons = () => {
     return (
         <>
             <CardWrapper>
-                <CardItem>
+                <CardItem padding="0">
                     <GMap />
                 </CardItem>
                 <CardItem>
