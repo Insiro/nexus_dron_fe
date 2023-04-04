@@ -11,6 +11,7 @@ export const SideBarWrapper = styled.div`
     bottom: 17%;
     width: 256px;
     overflow-y: auto;
+
     ${styles.MEDIAQUERY_UNDER_R} {
         left: -256px;
         ${(props) => props.opened && { left: 0 }}

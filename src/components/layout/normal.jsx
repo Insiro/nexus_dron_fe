@@ -17,7 +17,8 @@ export const ContentWrapper = styled.div`
     ${styles.MEDIAQUERY_UNDER_R} {
         margin-left: ${(props) => (props.opened ? '256px ' : '0')};
     }
-    overflow: scroll;
+    background: #808080;
+    overflow: auto;
 `;
 
 export const NormalLayout = ({ children }) => {
