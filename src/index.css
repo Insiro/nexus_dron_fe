@@ -40,6 +40,12 @@ h1 {
     max-width: 1120px;
     width: 90%;
     height: 100%;
+    margin: auto;
+}
+@media (max-width: 768px) {
+    .cards__container {
+        margin: 0px;
+    }
 }
 
 .cards__wrapper {
