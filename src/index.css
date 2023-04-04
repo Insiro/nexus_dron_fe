@@ -24,8 +24,8 @@ code {
 }
 
 .cards {
-    padding: 1rem;
     background: #808080;
+    overflow-y: scroll;
     height: 100%;
 }
 
