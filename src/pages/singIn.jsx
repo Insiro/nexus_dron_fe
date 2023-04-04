@@ -1,9 +1,17 @@
-import React, { useState, useEffect, useReducer } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import { AppBlock } from '../components/AppBlock';
 import { StyledButton } from '../components/button';
 
+import { setUser } from '../stores/userReducer';
+
+
 function LoginComponent() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [loginID, setLoginID] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [passwordInputType, setPasswordInputType] = useState({
@@ -40,12 +48,11 @@ function LoginComponent() {
 
         if (loginID === '') {
             alert('아이디를 입력해주세요.');
-        }
-        if (loginPassword === '') {
+        } else if (loginPassword === '') {
             alert('비밀번호를 입력해주세요.');
-        }
-
-        if (true /* login success */) {
+        } else if (true /* login success */) {
+            dispatch(setUser({ name: 'username' }));
+            navigate('/drons');
         }
     };
 
