@@ -9219,10 +9219,9 @@ __metadata:
     react-is: ^18.2.0
     react-redux: ^8.0.5
     react-router: ^6.10.0
-    react-router-dom: ^6.9.0
+    react-router-dom: ^6.10.0
     react-scripts: 5.0.1
     redux: ^4.2.1
-    reset.css: ^2.0.2
     styled-components: ^5.3.9
     web-vitals: ^2.1.4
   languageName: unknown
@@ -11022,7 +11021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.9.0":
+"react-router-dom@npm:^6.10.0":
   version: 6.10.0
   resolution: "react-router-dom@npm:6.10.0"
   dependencies:
@@ -11322,13 +11321,6 @@ __metadata:
   version: 1.0.0
   resolution: "requires-port@npm:1.0.0"
   checksum: eee0e303adffb69be55d1a214e415cf42b7441ae858c76dfc5353148644f6fd6e698926fc4643f510d5c126d12a705e7c8ed7e38061113bdf37547ab356797ff
-  languageName: node
-  linkType: hard
-
-"reset.css@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "reset.css@npm:2.0.2"
-  checksum: a6e0206cf0f6b16c7ccd2670fee730ebae6b36b4390bc9ea508a9de3220224ce4087cc760dd466996d6d360b7aa4738fad795a443a85817c8ccd75ee0ff3276a
   languageName: node
   linkType: hard
 
