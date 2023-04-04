@@ -1,16 +1,15 @@
 import { SideBarWrapper } from './wrapper';
 import SidebarItem_User from './SidebarItem';
 import React, { useState } from 'react';
-import '../css/sidebar.css';
+import './sidebar.css';
 import { Link } from 'react-router-dom';
 
 //TODO: add Sidebar contents
-export const SideBar = ({ children }) => {
+export const SideBar = ({ children, opened }) => {
     const [newButton, setNewButton] = useState('');
     const [buttons, setButtons] = useState([]);
-
     return (
-        <SideBarWrapper>
+        <SideBarWrapper opened={opened}>
             <div>{children}</div>
             <div>
                 <SidebarItem_User

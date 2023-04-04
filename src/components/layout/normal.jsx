@@ -1,8 +1,10 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
+import styled from 'styled-components';
 import * as styles from '../styles';
+import { HamBurger } from './hamburger';
 import { SideBar } from './sidebar';
 import { LayoutWrapper } from './wrapper';
 
@@ -13,13 +15,19 @@ export const ContentWrapper = styled.div`
     transition-property: margin-left;
     margin-left: 256px;
     ${styles.MEDIAQUERY_UNDER_R} {
-        margin-left: 0;
+        margin-left: ${(props) => (props.opened ? '256px ' : '0')};
     }
 `;
 
-export const NormalLayout = ({ children }) => (
-    <LayoutWrapper>
-        <SideBar />
-        <ContentWrapper>{children ? children : <Outlet />}</ContentWrapper>
-    </LayoutWrapper>
-);
+export const NormalLayout = ({ children }) => {
+    const opened = useSelector((state) => state.global.opened);
+    return (
+        <LayoutWrapper opened={opened}>
+            <HamBurger opened={opened} />
+            <SideBar opened={opened} />
+            <ContentWrapper opened={opened}>
+                {children ? children : <Outlet />}
+            </ContentWrapper>
+        </LayoutWrapper>
+    );
+};

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialGlobalState = {
-    opensidebar: false,
+    opened: false,
 };
 
 const globalSlice = createSlice({
@@ -8,10 +8,10 @@ const globalSlice = createSlice({
     initialState: initialGlobalState,
     reducers: {
         toggleSidebar: (state) => {
-            state.opensidebar = !state.opensidebar;
+            state.opened = !state.opened;
         },
         resetSidebar: (state) => {
-            state.opensidebar = false;
+            state.opened = false;
         },
     },
 });
