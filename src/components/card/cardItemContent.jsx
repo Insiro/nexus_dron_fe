@@ -12,5 +12,6 @@ export const CardItemContent = styled.div`
     overflow: hidden;
     text-decoration: none;
     padding: ${(props) => (props.padding ? props.padding : '1rem')};
-    height: ${(props) => (props.height ? props.height : '100%')};
+    min-height: ${(props) => (props.height ? props.height : '100%')};
+    flex-grow: 1;
 `;

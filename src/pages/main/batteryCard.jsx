@@ -28,8 +28,11 @@ const BatteryLine = ({ level, counts }) => {
 };
 
 export const BatteryCard = () => (
-    <CardWrapper>
+    <CardWrapper multiline="true">
         <SimpleCard height="20rem" title="배터리">
+            {/* <Table>
+                <TableRow>level = 0, count = 1</TableRow>
+            </Table> */}
             <BatteryLine level="0" counts="1" />
             <BatteryLine level="1" counts="2" />
             <BatteryLine level="2" counts="3" />

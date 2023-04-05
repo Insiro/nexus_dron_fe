@@ -11,12 +11,15 @@ const ContentWrapper = styled.div`
     flex-grow: 1;
     height: 100%;
     background: #808080;
+    display: flex;
     overflow-y: scroll;
 `;
 
 const InnerContentWrapper = styled.div`
     flex-grow: 1;
+    margin-bottom: 3rem;
     padding-bottom: 3rem;
+    height: 100%;
 `;
 
 export const NormalLayout = ({ children }) => {
