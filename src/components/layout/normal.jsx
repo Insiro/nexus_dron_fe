@@ -8,17 +8,17 @@ import { HamBurger } from './hamburger';
 import { SideBar } from './sidebar';
 import { LayoutWrapper } from './wrapper';
 
-export const ContentWrapper = styled.div`
-    position: relative;
+const ContentWrapper = styled.div`
+    flex-grow: 1;
     height: 100%;
-    ${styles.TRANSITION_SLOW}
-    transition-property: margin-left;
-    margin-left: 256px;
-    ${styles.MEDIAQUERY_UNDER_R} {
-        margin-left: ${(props) => (props.opened ? '256px ' : '0')};
-    }
+
     background: #808080;
-    overflow: auto;
+    overflow-y: scroll;
+`;
+
+const InnerContentWrapper = styled.div`
+    flex-grow: 1;
+    padding-bottom: 3rem;
 `;
 
 export const NormalLayout = ({ children }) => {
@@ -27,8 +27,10 @@ export const NormalLayout = ({ children }) => {
         <LayoutWrapper opened={opened}>
             <HamBurger opened={opened} />
             <SideBar opened={opened} />
-            <ContentWrapper opened={opened}>
-                {children ? children : <Outlet />}
+            <ContentWrapper>
+                <InnerContentWrapper>
+                    {children ? children : <Outlet />}
+                </InnerContentWrapper>
             </ContentWrapper>
         </LayoutWrapper>
     );

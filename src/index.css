@@ -25,7 +25,11 @@ code {
 }
 
 .cards {
+    max-width: 90% !important;
     height: 100%;
+    flex-grow: 1;
+    max-width: 100%;
+    display: flex;
 }
 
 h1 {
@@ -34,12 +38,13 @@ h1 {
 
 .cards__container {
     display: flex;
+    flex-grow: 1;
     flex-flow: column;
     align-items: center;
     max-width: 1120px;
+    justify-content: center;
     width: 90%;
     height: 100%;
-    margin: auto;
 }
 @media (max-width: 768px) {
     .cards__container {
@@ -49,13 +54,15 @@ h1 {
 
 .cards__wrapper {
     position: relative;
-    margin: 50px 0 45px;
+    margin-top: 50px;
+    margon-bottom: 45px;
     width: 100%;
 }
 
 .cards__items {
     margin-bottom: 24px;
     width: 100%;
+    justify-content: center;
 }
 
 .cards__item {
@@ -94,7 +101,6 @@ h1 {
     content: attr(data-category);
     position: absolute;
     bottom: 0;
-    margin-left: 10px;
     padding: 6px 8px;
     max-width: calc((100%) - 60px);
     font-size: 12px;
