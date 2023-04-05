@@ -5,11 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSelectedButton } from '../../../stores/droneReducer';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
+import DroneSideCard from '../../DroneSideCard';
 
 //TODO: add Sidebar contents
 export const SideBar = ({ children, opened }) => {
     const buttons = useSelector((state) => state.drone.buttons);
-    const selectedButton = useSelector(state => state.drone.selectedButton);
+    const selectedButton = useSelector((state) => state.drone.selectedButton);
     const dispatch = useDispatch();
 
     const handleButtonClick = (buttonId) => {
@@ -26,12 +27,25 @@ export const SideBar = ({ children, opened }) => {
                 />
             </div>
             <div className="button-wrapper">
-                {buttons && buttons.map((button, index) => (
-                    <button key={button.droneId} onClick={() => handleButtonClick(button.droneId)}>
-                        {console.log(selectedButton)}
-                        {button.droneName}
-                    </button>
-                ))}
+                {buttons &&
+                    buttons.map((button, index) => (
+                        //<button key={button.droneId} onClick={() => handleButtonClick(button.droneId)}>
+                        //{console.log(selectedButton)}
+                        //{button.droneName}
+                        //</button>
+
+                        <DroneSideCard
+                            key={button.droneId}
+                            name={button.droneName}
+                            alt="Drone_img"
+                            src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
+                            level={0}
+                            onClick={() => handleButtonClick(button.droneId)}
+                        >
+                            {console.log(selectedButton)}
+                            {button.droneName}
+                        </DroneSideCard>
+                    ))}
             </div>
             <div className="sidebar-bottom">
                 <form>

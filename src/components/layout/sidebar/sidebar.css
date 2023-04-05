@@ -1,18 +1,18 @@
 .sidebar-bottom form {
     margin-top: 20px;
-    position:fixed;
-    bottom : 0;
-    padding : 1.5%
-  }
-  
-  .sidebar-bottom form label {
+    position: fixed;
+    bottom: 0;
+    padding: 1.5%;
+}
+
+.sidebar-bottom form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    width: 100%
-  }
-  
-  .sidebar-bottom form button[type="button"] {
+    width: 100%;
+}
+
+.sidebar-bottom form button[type='button'] {
     display: block;
     width: 220%;
     padding: 10px;
@@ -21,19 +21,28 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .sidebar-bottom form button[type="button"]:hover {
-    background-color: #0062cc;
-  }
+}
 
-  .button-wrapper {
+.sidebar-bottom form button[type='button']:hover {
+    background-color: #0062cc;
+}
+
+.button-wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+
+.button-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+}
+
+.button-wrapper {
     display: flex;
     flex-direction: column;
-    padding : 5%;
+    padding: 5%;
     overflow-y: auto;
-  }
+}
 
-  .button-wrapper button {
+.button-wrapper button {
     margin-bottom: 5%;
-  }
+}
