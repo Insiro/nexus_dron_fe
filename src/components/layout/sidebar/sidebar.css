@@ -27,6 +27,15 @@
     background-color: #0062cc;
 }
 
+.button-wrapper:-webkit-scrollbar {
+    width: 4px;
+}
+
+.button-wrapper:-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+}
+
 .button-wrapper {
     display: flex;
     overflow-y: scroll;

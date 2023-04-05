@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSelectedButton } from '../../../stores/droneReducer';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
+import DroneSideCard from '../../DroneSideCard';
 
 //TODO: add Sidebar contents
 export const SideBar = ({ children, opened }) => {
@@ -28,13 +29,22 @@ export const SideBar = ({ children, opened }) => {
             <div className="button-wrapper">
                 {buttons &&
                     buttons.map((button, index) => (
-                        <button
+                        //<button key={button.droneId} onClick={() => handleButtonClick(button.droneId)}>
+                        //{console.log(selectedButton)}
+                        //{button.droneName}
+                        //</button>
+
+                        <DroneSideCard
                             key={button.droneId}
-                            onClick={() => handleButtonClick(button.droneId)}
+                            name={button.droneName}
+                            alt="Drone_img"
+                            src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
+                            level={0}
                         >
                             {console.log(selectedButton)}
                             {button.droneName}
-                        </button>
+
+                        </DroneSideCard>
                     ))}
             </div>
             <div className="sidebar-bottom">

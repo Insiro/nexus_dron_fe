@@ -11,9 +11,13 @@ export const Drons = () => {
                 </CardItem>
                 <CardItem>
                     <Drone_Card
-                        ID="001WGNW"
+                        ID="001-00-001"
+                        name="WGNW"
+                        type="test_type"
                         state="in transit"
-                        position="latitude : 60 longitude : 80"
+                        mgrDate="MM:DD:YYYY"
+                        position={[60, 80]}
+                        model="test_model"
                         battery="80%"
                         alt="Drone_img"
                         src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
