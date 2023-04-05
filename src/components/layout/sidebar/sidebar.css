@@ -1,6 +1,6 @@
 .sidebar-bottom form {
     margin-top: 20px;
-    position: fixed;
+    width: 100%;
     bottom: 0;
     padding: 1.5%;
 }
@@ -27,17 +27,19 @@
     background-color: #0062cc;
 }
 
-.button-wrapper::-webkit-scrollbar {
+.button-wrapper:-webkit-scrollbar {
     width: 4px;
 }
 
-.button-wrapper::-webkit-scrollbar-thumb {
+.button-wrapper:-webkit-scrollbar-thumb {
     border-radius: 2px;
     background: #ccc;
 }
 
 .button-wrapper {
     display: flex;
+    overflow-y: scroll;
+    flex-grow: 1;
     flex-direction: column;
     padding: 5%;
     overflow-y: auto;

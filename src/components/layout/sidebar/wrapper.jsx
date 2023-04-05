@@ -6,8 +6,9 @@ export const SideBarWrapper = styled.div`
     max-width: 256px;
     width: 256px;
     height: 100%;
-
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
     ${styles.MEDIAQUERY_UNDER_R} {
         width: ${(props) => (props.opened ? '0px' : '256px')};
     }

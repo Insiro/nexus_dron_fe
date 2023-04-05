@@ -10,6 +10,7 @@ const SimpleCardWrapper = styled.div`
     margin: 0 1rem;
     border-radius: 10px;
     margin: auto;
+    height: 100%;
 `;
 
 export const SimpleCard = ({ title, children, ...props }) => {

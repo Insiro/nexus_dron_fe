@@ -40,10 +40,10 @@ export const SideBar = ({ children, opened }) => {
                             alt="Drone_img"
                             src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
                             level={0}
-                            onClick={() => handleButtonClick(button.droneId)}
                         >
                             {console.log(selectedButton)}
                             {button.droneName}
+
                         </DroneSideCard>
                     ))}
             </div>
@@ -51,7 +51,9 @@ export const SideBar = ({ children, opened }) => {
                 <form>
                     <label htmlFor="input-text">Drone Input:</label>
                     <Link to="/drons/new">
-                        <button type="button">Add Dron</button>
+                        <button type="button" style={{ maxWidth: '95%' }}>
+                            Add Drone
+                        </button>
                     </Link>
                 </form>
             </div>
