@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 //TODO: add Sidebar contents
 export const SideBar = ({ children, opened }) => {
     const buttons = useSelector((state) => state.drone.buttons);
-    const selectedButton = useSelector(state => state.drone.selectedButton);
+    const selectedButton = useSelector((state) => state.drone.selectedButton);
     const dispatch = useDispatch();
 
     const handleButtonClick = (buttonId) => {
@@ -26,18 +26,24 @@ export const SideBar = ({ children, opened }) => {
                 />
             </div>
             <div className="button-wrapper">
-                {buttons && buttons.map((button, index) => (
-                    <button key={button.droneId} onClick={() => handleButtonClick(button.droneId)}>
-                        {console.log(selectedButton)}
-                        {button.droneName}
-                    </button>
-                ))}
+                {buttons &&
+                    buttons.map((button, index) => (
+                        <button
+                            key={button.droneId}
+                            onClick={() => handleButtonClick(button.droneId)}
+                        >
+                            {console.log(selectedButton)}
+                            {button.droneName}
+                        </button>
+                    ))}
             </div>
             <div className="sidebar-bottom">
                 <form>
                     <label htmlFor="input-text">Drone Input:</label>
                     <Link to="/drons/new">
-                        <button type="button">Add Dron</button>
+                        <button type="button" style={{ maxWidth: '95%' }}>
+                            Add Drone
+                        </button>
                     </Link>
                 </form>
             </div>
