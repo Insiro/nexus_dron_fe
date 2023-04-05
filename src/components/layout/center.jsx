@@ -5,6 +5,7 @@ import { Outlet } from 'react-router';
 const CenterWrapper = styled.div`
     display: flex;
     height: 100%;
+    width: 100%;
     flex-direction: ${(props) => props.direction};
 `;
 
