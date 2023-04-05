@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import { AppBlock } from '../components/AppBlock';
 import { StyledButton } from '../components/button';
-
+import {
+    BackGround,
+    CardItem,
+    CardWrapper,
+    InputBox,
+} from '../components/LoginBox';
 function RegisterComponent() {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
@@ -17,11 +21,11 @@ function RegisterComponent() {
         }
     };
     return (
-        <>
-            <form>
-                <AppBlock>
+        <BackGround>
+            <CardWrapper>
+                <CardItem>
                     <h1>Register</h1>
-                    <input
+                    <InputBox
                         type="text"
                         placeholder="ID"
                         value={id}
@@ -29,7 +33,7 @@ function RegisterComponent() {
                     />
                     <br />
                     <br />
-                    <input
+                    <InputBox
                         type="text"
                         placeholder="PassWord"
                         value={password}
@@ -37,7 +41,7 @@ function RegisterComponent() {
                     />
                     <br />
                     <br />
-                    <input
+                    <InputBox
                         type="text"
                         placeholder="PassWord Confirm"
                         value={passwordConfirm}
@@ -46,9 +50,9 @@ function RegisterComponent() {
                     <br />
                     <br />
                     <StyledButton onClick={registUser}>Register</StyledButton>
-                </AppBlock>
-            </form>
-        </>
+                </CardItem>
+            </CardWrapper>
+        </BackGround>
     );
 }
 export default RegisterComponent;

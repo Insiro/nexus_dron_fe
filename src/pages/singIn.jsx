@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
-import { AppBlock } from '../components/AppBlock';
+import {
+    BackGround,
+    CardItem,
+    CardWrapper,
+    InputBox,
+} from '../components/LoginBox';
 import { StyledButton } from '../components/button';
 
 import { setUser } from '../stores/userReducer';
-
-
 function LoginComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -57,21 +59,22 @@ function LoginComponent() {
     };
 
     return (
-        <>
-            <form>
-                <AppBlock>
-                    <h1>Login</h1>
-                    <input
+        <BackGround className="backGround">
+            <CardWrapper>
+                <CardItem padding="4rem">
+                    <h1>Nexus Drone</h1>
+                    <h2>Login</h2>
+                    <InputBox
                         type="text"
                         id="id"
                         name="ID"
                         placeholder="ID"
                         value={loginID}
                         onChange={(e) => getLoginID(e)}
-                    ></input>
+                    ></InputBox>
                     <br />
                     <br />
-                    <input
+                    <InputBox
                         type={passwordInputType.type}
                         id="password"
                         name="password"
@@ -79,7 +82,7 @@ function LoginComponent() {
                         autoComplete={passwordInputType.autoComplete}
                         value={loginPassword}
                         onChange={(e) => setLoginPassword(e.target.value)}
-                    ></input>
+                    ></InputBox>
                     <br />
                     <br />
                     <StyledButton type="button" onClick={login}>
@@ -89,9 +92,9 @@ function LoginComponent() {
                     <Link to="/auth/register">
                         <span>Register</span>
                     </Link>
-                </AppBlock>
-            </form>
-        </>
+                </CardItem>
+            </CardWrapper>
+        </BackGround>
     );
 }
 export default LoginComponent;

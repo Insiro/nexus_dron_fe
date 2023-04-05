@@ -10,7 +10,8 @@ export const StyledButton = styled.button`
     cursor: pointer;
     padding-left: 1rem;
     padding-right: 1rem;
-
+    align-items: center;
+    justify-content: center;
     /* 크기 */
     height: 1.5rem;
     font-size: 1rem;
