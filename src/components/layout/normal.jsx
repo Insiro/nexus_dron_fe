@@ -3,7 +3,6 @@ import { Outlet } from 'react-router';
 import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
-import * as styles from '../styles';
 import { HamBurger } from './hamburger';
 import { SideBar } from './sidebar';
 import { LayoutWrapper } from './wrapper';
@@ -11,7 +10,6 @@ import { LayoutWrapper } from './wrapper';
 const ContentWrapper = styled.div`
     flex-grow: 1;
     height: 100%;
-
     background: #808080;
     overflow-y: scroll;
 `;
