@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
+const CardOuter = styled.div`
+    height: 100%;
+    max-width: 100%;
+    display: flex;
+`;
+
 export const CardWrapper = ({ children }) => {
     return (
-        <div className="cards">
+        <CardOuter>
             <div className="cards__container">
                 <div className="cards__wrapper">{children}</div>
             </div>
-        </div>
+        </CardOuter>
     );
 };
 
