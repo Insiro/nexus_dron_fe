@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CardItemContent = styled.div`
     display: flex;
     flex-flow: ${(props) => props.direction || 'column'};
-    background: #fff;
+    background-color: ${(props) => (props.color ? props.color : '#fff')};
     width: 100%;
     box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
     -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));

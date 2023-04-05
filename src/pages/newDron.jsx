@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addButton } from "../stores/droneReducer";
+import { addButton } from '../stores/droneReducer';
 
 import { CardItem, CardWrapper } from '../components/card';
 import { LabeledInput } from '../components/labeledInput';
@@ -18,7 +18,7 @@ export const NewDron = () => {
 
     const dispatch = useDispatch();
 
-    const buttons = useSelector(state => state.drone.butttons);
+    const buttons = useSelector((state) => state.drone.butttons);
 
     const handleButtonClick = () => {
         // 입력한 정보로 버튼 정보 객체 생성
@@ -31,28 +31,37 @@ export const NewDron = () => {
             dronelongitude,
             droneBattery,
             droneMgrDate,
-            droneType
+            droneType,
         };
 
-
-        if (buttons != undefined && buttons.some(button => button.droneId === droneId)) {
-            alert("이미 존재하는 ID입니다. ID를 바꾸어 입력해주세요.");
+        if (
+            buttons != undefined &&
+            buttons.some((button) => button.droneId === droneId)
+        ) {
+            alert('이미 존재하는 ID입니다. ID를 바꾸어 입력해주세요.');
             return;
         }
 
-        if (droneId && droneName && droneState && droneModel && droneLatitude && dronelongitude && droneBattery && droneMgrDate && droneType) {
+        if (
+            droneId &&
+            droneName &&
+            droneState &&
+            droneModel &&
+            droneLatitude &&
+            dronelongitude &&
+            droneBattery &&
+            droneMgrDate &&
+            droneType
+        ) {
             // Redux store에 버튼 정보 추가 액션 디스패치
             dispatch(addButton(buttonInfo));
         } else {
-            alert("모든 값들을 입력해주세요.")
+            alert('모든 값들을 입력해주세요.');
         }
     };
 
     return (
         <CardWrapper>
-            {/* <CardItem>
-                <p>{debug}</p>
-            </CardItem> */}
             <CardItem>
                 <LabeledInput
                     label="DronId"
@@ -116,8 +125,17 @@ export const NewDron = () => {
                     onChange={(e) => setDroneType(e.target.value)}
                 />
             </CardItem>
-            <CardItem>
-                <button onClick={handleButtonClick}>Submit</button>
+            <CardItem onClick={handleButtonClick} color="#9f9fff">
+                <b
+                    style={{
+                        fontSize: '2rem',
+                        width: '100%',
+                        height: '100%',
+                        textAlign: 'center',
+                    }}
+                >
+                    submit
+                </b>
             </CardItem>
         </CardWrapper>
     );

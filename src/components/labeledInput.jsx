@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const StyledH2 = styled.h2`
+const StyledH3 = styled.h3`
     display: inline-block;
     margin: 1rem;
 `;
@@ -19,7 +19,7 @@ export const LabeledInput = ({ label, value, onChange }) => {
     return (
         <>
             <StyledLabel>
-                <StyledH2>{label}</StyledH2>
+                <StyledH3>{label}</StyledH3>
                 <StyledInput value={value} onChange={onChange} />
             </StyledLabel>
         </>

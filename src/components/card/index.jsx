@@ -28,7 +28,7 @@ export const CardItem = ({ children, title, ...props }) => {
         <ul className="cards__items">
             <li className="cards__item">
                 <CardItemContent {...props}>
-                    {title && <div>{title}</div>}
+                    {title && <h3>{title}</h3>}
                     {children}
                 </CardItemContent>
             </li>

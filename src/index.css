@@ -60,13 +60,13 @@ h1 {
 }
 
 .cards__items {
+    list-style-type: none;
     margin-bottom: 4rem;
     width: 100%;
     justify-content: center;
 }
 
 .cards__item {
-    display: flex;
     flex: 1;
     margin: 0 1rem;
     border-radius: 10px;
@@ -166,12 +166,6 @@ h1 {
 @media only screen and (min-width: 1200px) {
     .content__blog__container {
         width: 84%;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .cards__items {
-        display: flex;
     }
 }
 
