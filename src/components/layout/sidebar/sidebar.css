@@ -9,19 +9,12 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-  }
-  
-  .sidebar-bottom form input[type="text"] {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%
   }
   
   .sidebar-bottom form button[type="button"] {
     display: block;
-    width: 100%;
+    width: 220%;
     padding: 10px;
     background-color: #007bff;
     color: #fff;
