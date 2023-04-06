@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 const DronInfoWrapper = styled.div`
-    margin-bottom: 0.5em;
-    justify-content: center;
-    border-radius: 1em;
-    box-shadow: 6px 6px 8px 0px makerShadow;
-    background-color: makerDark;
     color: makerWhite;
     width: 100%;
     height: 100%;

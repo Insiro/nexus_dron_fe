@@ -5,7 +5,8 @@ import { SimpleCardContainer } from './simpleCardContainer';
 
 const CradWrapperOuter = styled.div`
     justify-content: center;
-    max-width: ${(props) => (props.multiline ? '100%' : '90%')} !important;
+    margin-left: 1rem;
+    margin-right: 1rem;
     height: 100%;
     flex-grow: 1;
     display: flex;
