@@ -49,6 +49,7 @@ h1 {
 @media (max-width: 768px) {
     .cards__container {
         margin: 0px;
+        justify-content: center;
     }
 }
 
@@ -70,7 +71,7 @@ h1 {
     flex: 1;
     margin: 0 1rem;
     border-radius: 10px;
-    width: 100%;
+    justify-content: center;
 }
 ul {
     padding-inline-start: 0px;
