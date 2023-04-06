@@ -23,7 +23,7 @@ function RegisterComponent() {
     return (
         <BackGround>
             <CardWrapper>
-                <CardItem>
+                <CardItem padding="4rem">
                     <h1>Register</h1>
                     <InputBox
                         type="text"
