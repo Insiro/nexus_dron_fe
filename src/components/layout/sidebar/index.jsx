@@ -22,9 +22,11 @@ export const SideBar = ({ children, opened }) => {
             <div>{children}</div>
             <div>
                 <SidebarItem_User
-                    image="https://pbs.twimg.com/media/FBzir4sVIAMeXby.png"
-                    text="몰?루"
+                    image="https://swingbrowser.userecho.com/s/cache/b5/09/b5098d61f3ef34b35311456b08123897.png"
                 />
+                <p>
+                안녕하세요 팀 NexusDrone입니다.
+                </p>
             </div>
             <div className="button-wrapper">
                 <DroneSideCard
