@@ -1,11 +1,13 @@
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
-const SideCardWaraper = styled.div`
+const SideCardWaraper = styled.button`
     justify-content: center;
     border-radius: 1em;
     margin-top: 5px;
     margin-bottom: 5px;
-    background-color: #;
+    background-color: white;
+    border-width: 0px;
     &:hover {
         background: silver;
     }
@@ -34,7 +36,7 @@ const DronBatteryWrapper = styled.div`
 const ImgDrone = styled.img`
     display: block;
     width: 100%;
-    hegith: 100%;
+    height: 100%;
     object-fit: cover;
     transition: all 0.2s linear;
 `;
@@ -66,8 +68,10 @@ const BatteryLine = ({ level }) => {
 };
 
 function DroneSideCard(props) {
+    const navigate = useNavigate();
+    const onclicked = () => navigate(`/drons/${props.id}`);
     return (
-        <SideCardWaraper>
+        <SideCardWaraper onClick={onclicked}>
             <SideCardTitle>
                 <h4>Drone Name : {props.name}</h4>
             </SideCardTitle>

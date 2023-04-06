@@ -27,24 +27,23 @@ export const SideBar = ({ children, opened }) => {
                 />
             </div>
             <div className="button-wrapper">
+                <DroneSideCard
+                    id="1"
+                    name="1"
+                    alt="Drone_img"
+                    src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
+                    level={0}
+                />
                 {buttons &&
                     buttons.map((button, index) => (
-                        //<button key={button.droneId} onClick={() => handleButtonClick(button.droneId)}>
-                        //{console.log(selectedButton)}
-                        //{button.droneName}
-                        //</button>
-
                         <DroneSideCard
                             key={button.droneId}
+                            id={button.droneId}
                             name={button.droneName}
                             alt="Drone_img"
                             src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
                             level={0}
-                        >
-                            {console.log(selectedButton)}
-                            {button.droneName}
-
-                        </DroneSideCard>
+                        />
                     ))}
             </div>
             <div className="sidebar-bottom">
