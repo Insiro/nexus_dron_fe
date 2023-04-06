@@ -20,6 +20,32 @@ const DronDataWrapper = styled.div`
     width: 100%;
 `;
 
+const BatteryDiv = styled.div`
+    margin: 0.5rem;
+    border-radius: 10px;
+    padding: 0.5rem;
+    background-color: ${(props) => (props.bg ? props.bg : 'gray')};
+    color: ${(props) => (props.color ? props.color : 'black')};
+    width: 40%;
+    font-weight: bold;
+`;
+
+const BatteryLine = ({ level }) => {
+    let bg = 'gray';
+    let color = 'white';
+    if (level == 0) bg = 'red';
+    else if (level == 1) {
+        bg = 'orange';
+        color = '#101070';
+    } else if (level == 2) bg = 'green';
+    else if (level == 3) bg = 'blue';
+    return (
+        <BatteryDiv bg={bg} color={color}>
+            <span>Battery Level {level} : </span>
+        </BatteryDiv>
+    );
+};
+
 const DronTextDataWrapper = styled.div`
     width: 55%;
     max-height: 400px;
@@ -50,43 +76,50 @@ const DronTextData = (props) => {
     return (
         <div style={{ alignItems: 'center' }}>
             <div style={{ textAlign: 'left', marginLeft: '10px' }}>
-                <h3>Drone ID : </h3>
+                <h3 className="Drone_text">Drone ID : </h3>
             </div>
             <div style={{ textAlign: 'right', marginRight: '10px' }}>
                 {props.id}
             </div>
             <div style={{ textAlign: 'left', marginLeft: '10px' }}>
-                <h3>Drone Type : </h3>
+                <h3 className="Drone_text">Drone Type : </h3>
             </div>
             <div style={{ textAlign: 'right', marginRight: '10px' }}>
                 {props.type}
             </div>
             <div style={{ textAlign: 'left', marginLeft: '10px' }}>
-                <h3>current state : </h3>
+                <h3 className="Drone_text">current state : </h3>
             </div>
             <div style={{ textAlign: 'right', marginRight: '10px' }}>
                 {props.state}
             </div>
             <div style={{ textAlign: 'left', marginLeft: '10px' }}>
-                <h3>Drone position : </h3>
+                <h3 className="Drone_text">Drone position : </h3>
             </div>
             <div style={{ textAlign: 'right', marginRight: '10px' }}>
                 lat : {props.position[0]}, lng: {props.position[0]}
             </div>
             <div style={{ textAlign: 'left', marginLeft: '10px' }}>
-                <h3>Drone battery : </h3>
+                <h3 className="Drone_text">Drone battery : </h3>
             </div>
-            <div style={{ textAlign: 'right', marginRight: '10px' }}>
-                {props.battery}
+            <div
+                style={{
+                    textAlign: 'left',
+                    marginRight: '10px',
+                    display: 'flex',
+                }}
+            >
+                <p style={{ marginLeft: 'auto' }}>status :</p>
+                <BatteryDiv level={props.level} />
             </div>
             <div style={{ textAlign: 'left', marginLeft: '10px' }}>
-                <h3>Drone last service date : </h3>
+                <h3 className="Drone_text">Drone last service date : </h3>
             </div>
             <div style={{ textAlign: 'right', marginRight: '10px' }}>
                 {props.mgrDate}
             </div>
             <div style={{ textAlign: 'left', marginLeft: '10px' }}>
-                <h3>Drone Model : </h3>
+                <h3 className="Drone_text">Drone Model : </h3>
             </div>
             <div style={{ textAlign: 'right', marginRight: '10px' }}>
                 {props.model}
@@ -99,7 +132,7 @@ function Drone_Card(props) {
     return (
         <DronInfoWrapper>
             <DronTitle>
-                <h2>Dron Name : {props.name}</h2>
+                <h2 className="Drone_ID">Dron Name : {props.name}</h2>
                 <hr />
             </DronTitle>
             <DronDataWrapper>
@@ -109,7 +142,7 @@ function Drone_Card(props) {
                         type={props.type}
                         state={props.state}
                         position={props.position}
-                        battery={props.battery}
+                        level={props.level}
                         mgrDate={props.mgrDate}
                         model={props.model}
                     ></DronTextData>
