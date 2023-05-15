@@ -6,6 +6,7 @@ import { setSelectedButton } from '../../../stores/droneReducer';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
 import DroneSideCard from '../../DroneSideCard';
+import { StyledButton } from '../../../components/button';
 
 //TODO: add Sidebar contents
 export const SideBar = ({ children, opened }) => {
@@ -16,7 +17,9 @@ export const SideBar = ({ children, opened }) => {
     const handleButtonClick = (buttonId) => {
         dispatch(setSelectedButton(buttonId));
     };
+    const correctionUser=(e)=>{
 
+    }
     return (
         <SideBarWrapper opened={opened}>
             <div>{children}</div>
@@ -24,6 +27,10 @@ export const SideBar = ({ children, opened }) => {
                 <SidebarItem_User
                     image="https://swingbrowser.userecho.com/s/cache/b5/09/b5098d61f3ef34b35311456b08123897.png"
                 />
+                <Link to="/drons/userinfo">
+                    <StyledButton>수정</StyledButton>
+                </Link>
+
                 <p>
                 안녕하세요 팀 NexusDrone입니다.
                 </p>
