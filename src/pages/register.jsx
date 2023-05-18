@@ -6,20 +6,36 @@ import {
     CardWrapper,
     InputBox,
 } from '../components/LoginBox';
+import axios from 'axios';
 function RegisterComponent() {
+    const baseUrl = "http://localhost:8081"
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
-    const registUser = () => {
+    const handleSubmit = async (e) => {
         console.log(id, password, passwordConfirm);
-        if (password === passwordConfirm) {
-            //register success
-            alert('회원가입이 완료되었습니다.');
-        } else {
+        if (password != passwordConfirm) {
             alert('비밀번호가 다릅니다. 다시 입력해주세요');
+        }else{
+        e.preventDefault();
+        await axios.post(baseUrl + "/api/auth/register", {
+            id: id,
+            pwd: password,
+          })
+          .then((response) => {
+            if(response.data==1){
+                alert("회원가입 완료");
+            }else{
+                alert("이미 존재하는 계정입니다.");
+            }
+          })
+          .catch((error) => {
+            console.log(error);    
+          });
         }
-    };
+        // post code
+      };
     return (
         <BackGround>
             <CardWrapper>
@@ -49,7 +65,7 @@ function RegisterComponent() {
                     />
                     <br />
                     <br />
-                    <StyledButton onClick={registUser}>Register</StyledButton>
+                    <StyledButton onClick={handleSubmit}>Register</StyledButton>
                 </CardItem>
             </CardWrapper>
         </BackGround>

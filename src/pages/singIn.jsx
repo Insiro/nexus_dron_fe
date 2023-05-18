@@ -10,10 +10,11 @@ import {
 import { StyledButton } from '../components/button';
 
 import { setUser } from '../stores/userReducer';
+import axios from 'axios';
 function LoginComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    const baseUrl = "http://localhost:8081"
     const [loginID, setLoginID] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [passwordInputType, setPasswordInputType] = useState({
@@ -45,16 +46,39 @@ function LoginComponent() {
         return;
     };
 
-    const login = () => {
-        console.log({ loginID, loginPassword });
-
+    const login = async (e) => {
+        
         if (loginID === '') {
             alert('아이디를 입력해주세요.');
         } else if (loginPassword === '') {
             alert('비밀번호를 입력해주세요.');
         } else if (true /* login success */) {
-            dispatch(setUser({ name: 'username' }));
-            navigate('/drons');
+            console.log({ loginID, loginPassword });
+            e.preventDefault();
+            await axios
+            .post(baseUrl + "/api/auth", {
+            id: loginID,
+            pwd: loginPassword,
+          })
+          .then((response) => {
+            if(response.data==1){
+                dispatch(setUser({ name: 'username' }));
+                navigate('/drons',{
+                    state:{
+                        id:loginID,
+                        pwd:loginPassword,
+                    }
+                });
+            }else if(response.data==0){
+                alert("없는 아이디입니다.");
+            }else{
+                alert("비밀번호가 틀립니다.")
+            }
+          })
+          .catch((error) => {
+            console.log(error);    
+          });
+
         }
     };
 

@@ -10,6 +10,8 @@ import Register from './pages/register';
 import { Drons } from './pages/drons';
 import { NewDron } from './pages/newDron';
 import { Main } from './pages/main';
+import UserInfo from './pages/userinfo';
+import UserPage from './pages/userPage';
 const RootRedirector = () => {
     const user = useSelector((state) => state.user.name);
     return <Navigate to={user ? '/drons' : '/auth'} replace />;
@@ -25,6 +27,8 @@ function App() {
                         <Route path="/auth/register" element={<Register />} />
                     </Route>
                     <Route path="/drons" element={<NormalLayout />}>
+                        <Route path="/drons/userinfo" element={<UserInfo />} />
+                        <Route path="/drons/userlist" element={<UserPage/>}/>
                         <Route path="/drons" element={<Main />} />
                         <Route path="/drons/new" element={<NewDron />} />
                         <Route path="/drons:id" element={<Drons />} />

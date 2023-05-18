@@ -24,6 +24,13 @@ export const SideBar = ({ children, opened }) => {
             </div>
             <div className="sidebar-bottom">
                 <form>
+                    <Link to="/drons/userlist">
+                    <button type="button" style={{ maxWidth: '95%' }}>
+                        User List
+                    </button>
+                    </Link>
+                </form>
+                <form>
                     <label htmlFor="input-text">Drone Input:</label>
                     <input
                         type="text"
