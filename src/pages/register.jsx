@@ -7,12 +7,13 @@ import {
     InputBox,
 } from '../components/LoginBox';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function RegisterComponent() {
     const baseUrl = "http://localhost:8081"
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
-
+    const navigate=useNavigate();
     const handleSubmit = async (e) => {
         console.log(id, password, passwordConfirm);
         if (password != passwordConfirm) {
@@ -33,6 +34,7 @@ function RegisterComponent() {
           .catch((error) => {
             console.log(error);    
           });
+          navigate('/auth')
         }
         // post code
       };

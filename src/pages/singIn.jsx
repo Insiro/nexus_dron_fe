@@ -16,6 +16,9 @@ function LoginComponent() {
     const baseUrl = "http://localhost:8081"
     const [loginID, setLoginID] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+    const [img,setImg]=useState();
+    const [uuid, setUuid]=useState();
+    const [permission, setPermission]=useState();
     const [passwordInputType, setPasswordInputType] = useState({
         type: 'password',
         autoComplete: 'current-password',
@@ -59,13 +62,27 @@ function LoginComponent() {
             id: loginID,
             pwd: loginPassword,
           })
-          .then((response) => {
+          .then(async (response) => {
             if(response.data==1){
+                await axios
+                .get(baseUrl+"/api/user/"+loginID)
+                .then((response)=>{
+                    console.log(response);
+                    uuid=response.data.uuid;
+                    permission=response.data.permission;
+                    img=response.data.img;
+                })
+                .catch((error)=>{
+                    console.log(error);
+                })
                 dispatch(setUser({ name: 'username' }));
                 navigate('/drons',{
                     state:{
+                        uuid:uuid,
+                        permission:permission,
                         id:loginID,
                         pwd:loginPassword,
+                        img:img,
                     }
                 });
             }else if(response.data==0){
