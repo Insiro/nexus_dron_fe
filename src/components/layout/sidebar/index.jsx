@@ -1,26 +1,59 @@
 import { SideBarWrapper } from './wrapper';
 import SidebarItem_User from './SidebarItem';
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSelectedButton } from '../../../stores/droneReducer';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
+import DroneSideCard from '../../DroneSideCard';
+import { StyledButton } from '../../../components/button';
 
 //TODO: add Sidebar contents
 export const SideBar = ({ children, opened }) => {
-    const [newButton, setNewButton] = useState('');
-    const [buttons, setButtons] = useState([]);
+    const buttons = useSelector((state) => state.drone.buttons);
+    const selectedButton = useSelector((state) => state.drone.selectedButton);
+    const dispatch = useDispatch();
+
+    const handleButtonClick = (buttonId) => {
+        dispatch(setSelectedButton(buttonId));
+    };
+    const correctionUser=(e)=>{
+
+    }
     return (
         <SideBarWrapper opened={opened}>
             <div>{children}</div>
             <div>
                 <SidebarItem_User
-                    image="https://pbs.twimg.com/media/FBzir4sVIAMeXby.png"
-                    text="몰?루"
+                    image="https://swingbrowser.userecho.com/s/cache/b5/09/b5098d61f3ef34b35311456b08123897.png"
                 />
+                <Link to="/drons/userinfo">
+                    <StyledButton>수정</StyledButton>
+                </Link>
+
+                <p>
+                안녕하세요 팀 NexusDrone입니다.
+                </p>
             </div>
             <div className="button-wrapper">
-                {buttons.map((button, index) => (
-                    <button key={index}>{button}</button>
-                ))}
+                <DroneSideCard
+                    id="1"
+                    name="1"
+                    alt="Drone_img"
+                    src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
+                    level={0}
+                />
+                {buttons &&
+                    buttons.map((button, index) => (
+                        <DroneSideCard
+                            key={button.droneId}
+                            id={button.droneId}
+                            name={button.droneName}
+                            alt="Drone_img"
+                            src="https://dji-official-fe.djicdn.com/cms/uploads/1d5df050695b621ed32cd2593759ffed.png"
+                            level={0}
+                        />
+                    ))}
             </div>
             <div className="sidebar-bottom">
                 <form>
@@ -32,15 +65,10 @@ export const SideBar = ({ children, opened }) => {
                 </form>
                 <form>
                     <label htmlFor="input-text">Drone Input:</label>
-                    <input
-                        type="text"
-                        id="input-text"
-                        name="input-text"
-                        value={newButton}
-                        onChange={(e) => setNewButton(e.target.value)}
-                    />
                     <Link to="/drons/new">
-                        <button type="button">Add Dron</button>
+                        <button type="button" style={{ maxWidth: '95%' }}>
+                            Add Drone
+                        </button>
                     </Link>
                 </form>
             </div>

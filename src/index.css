@@ -25,10 +25,11 @@ code {
 }
 
 .cards {
-    max-width: 90% !important;
+    justify-content: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
     height: 100%;
     flex-grow: 1;
-    max-width: 100%;
     display: flex;
 }
 
@@ -49,6 +50,7 @@ h1 {
 @media (max-width: 768px) {
     .cards__container {
         margin: 0px;
+        justify-content: center;
     }
 }
 
@@ -60,18 +62,20 @@ h1 {
 }
 
 .cards__items {
-    margin-bottom: 24px;
-    width: 100%;
+    list-style-type: none;
+    margin-bottom: 4rem;
     justify-content: center;
+    padding-inline-start: 0px;
 }
 
 .cards__item {
-    display: flex;
     flex: 1;
-    margin: 0 1rem;
     border-radius: 10px;
+    justify-content: center;
 }
-
+ul {
+    padding-inline-start: 0px;
+}
 .cards__item__link {
     display: flex;
     flex-flow: column;
@@ -166,12 +170,6 @@ h1 {
 @media only screen and (min-width: 1200px) {
     .content__blog__container {
         width: 84%;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .cards__items {
-        display: flex;
     }
 }
 
