@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { CardItemContent } from './cardItemContent';
 import { SimpleCard } from './simpleCard';
 import { SimpleCardContainer } from './simpleCardContainer';
+import { NoticeCardContainer } from './NoticeCardContainer';
 
 const CradWrapperOuter = styled.div`
     justify-content: center;
@@ -10,13 +11,14 @@ const CradWrapperOuter = styled.div`
     height: 100%;
     flex-grow: 1;
     display: flex;
+    align-items: center;
 `;
 
 export const CardWrapper = ({ children, ...props }) => {
     return (
         <CradWrapperOuter {...props}>
-            <div className="cards__container" style={{ height: '100%' }}>
-                <div className="cards__wrapper" style={{ height: '100%' }}>
+            <div className="cards__container" style={{ height: '100%'}}>
+                <div className="cards__wrapper" style={{ height: '100%'}}>
                     {children}
                 </div>
             </div>
@@ -37,4 +39,4 @@ export const CardItem = ({ children, title, ...props }) => {
     );
 };
 
-export { SimpleCard, SimpleCardContainer };
+export { SimpleCard, SimpleCardContainer, NoticeCardContainer };
