@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { StyledButton } from './button';
+import { Link } from 'react-router-dom';
 
 const DronInfoWrapper = styled.div`
     color: makerWhite;
@@ -62,9 +64,15 @@ const DronImgWrapper = styled.div`
 const DronImg = styled.img`
     display: block;
     width: 100%;
-    hegith: 100%;
+    heigth: 100%;
     object-fit: cover;
     transition: all 0.2s linear;
+`;
+
+const DronButtonWrapper = styled.div`
+    width: 100%
+    display: flex;
+    flex-grow: 1;
 `;
 
 const DronTextData = (props) => {
@@ -123,6 +131,39 @@ const DronTextData = (props) => {
     );
 };
 
+const Drone_Button = styled.button`
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+`;
+
+function CallDronEdit() {
+    console.log('call_del');
+}
+
+const DronButton = (props) => {
+    console.log(props);
+
+    return (
+        <div>
+            <Link
+                to={`/drons/Edit/${props.drone.ID}`}
+                state={{ drone: props.drone }}
+            >
+                <Drone_Button type="button">Edit Drone</Drone_Button>
+            </Link>
+
+            <Drone_Button type="button" onClick={CallDronEdit}>
+                Delete Drone
+            </Drone_Button>
+        </div>
+    );
+};
+
 function Drone_Card(props) {
     return (
         <DronInfoWrapper>
@@ -146,6 +187,7 @@ function Drone_Card(props) {
                     <DronImg alt={props.alt} src={props.src} />
                 </DronImgWrapper>
             </DronDataWrapper>
+            <DronButton drone={props}></DronButton>
         </DronInfoWrapper>
     );
 }
