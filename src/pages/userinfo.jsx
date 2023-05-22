@@ -53,7 +53,7 @@ function ChangeingUserInfo() {
     }
     const Change = async(e)=>{
         e.preventDefault();
-        await axios.post(baseUrl + "/api/user/", {
+        await axios.put(baseUrl + "/api/user/", {
             id: userID,
             pwd: userPassword,
             img: userImage,
