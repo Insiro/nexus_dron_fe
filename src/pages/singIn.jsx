@@ -13,12 +13,12 @@ import axios from 'axios';
 function LoginComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const baseUrl = "http://localhost:8081"
+    const baseUrl = 'http://localhost:8081';
     const [loginID, setLoginID] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
-    const [img,setImg]=useState();
-    const [uuid, setUuid]=useState();
-    const [permission, setPermission]=useState();
+    const [img, setImg] = useState('');
+    const [uuid, setUuid] = useState('');
+    const [permission, setPermission] = useState('');
     const [passwordInputType, setPasswordInputType] = useState({
         type: 'password',
         autoComplete: 'current-password',
@@ -49,7 +49,6 @@ function LoginComponent() {
     };
 
     const login = async (e) => {
-        
         if (loginID === '') {
             alert('아이디를 입력해주세요.');
         } else if (loginPassword === '') {
@@ -58,43 +57,40 @@ function LoginComponent() {
             console.log({ loginID, loginPassword });
             e.preventDefault();
             await axios
-            .post(baseUrl + "/api/auth", {
-            id: loginID,
-            pwd: loginPassword,
-          })
-          .then(async (response) => {
-            if(response.data==1){
-                await axios
-                .get(baseUrl+"/api/user/"+loginID)
-                .then((response)=>{
-                    console.log(response);
-                    uuid=response.data.uuid;
-                    permission=response.data.permission;
-                    img=response.data.img;
-                })
-                .catch((error)=>{
+                .all([
+                    axios.post(baseUrl + '/api/auth', {
+                        id: loginID,
+                        pwd: loginPassword,
+                    }),
+                    axios.get(baseUrl + '/api/auth/' + loginID),
+                ])
+                .then(
+                    axios.spread((response, getUser) => {
+                        if (response.data == 1) {
+                            console.log(getUser.data);
+                            setUuid(getUser.data.uuid);
+                            setPermission(getUser.data.permission);
+                            setImg(getUser.data.img);
+                            dispatch(setUser({ name: 'username' }));
+                            navigate('/drons', {
+                                state: {
+                                    uuid: uuid,
+                                    permission: permission,
+                                    id: loginID,
+                                    pwd: loginPassword,
+                                    img: img,
+                                },
+                            });
+                        } else if (response.data == 0) {
+                            alert('없는 아이디입니다.');
+                        } else {
+                            alert('비밀번호가 틀립니다.');
+                        }
+                    })
+                )
+                .catch((error) => {
                     console.log(error);
-                })
-                dispatch(setUser({ name: 'username' }));
-                navigate('/drons',{
-                    state:{
-                        uuid:uuid,
-                        permission:permission,
-                        id:loginID,
-                        pwd:loginPassword,
-                        img:img,
-                    }
                 });
-            }else if(response.data==0){
-                alert("없는 아이디입니다.");
-            }else{
-                alert("비밀번호가 틀립니다.")
-            }
-          })
-          .catch((error) => {
-            console.log(error);    
-          });
-
         }
     };
 
