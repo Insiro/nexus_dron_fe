@@ -12,9 +12,18 @@ import { setUser } from '../stores/userReducer';
 function LoginComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+<<<<<<< Updated upstream
 
     const [loginID, setLoginID] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+=======
+    const baseUrl = 'http://localhost:8081';
+    const [loginID, setLoginID] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+    const [img, setImg] = useState('');
+    const [uuid, setUuid] = useState('');
+    const [permission, setPermission] = useState('');
+>>>>>>> Stashed changes
     const [passwordInputType, setPasswordInputType] = useState({
         type: 'password',
         autoComplete: 'current-password',
@@ -44,16 +53,60 @@ function LoginComponent() {
         return;
     };
 
+<<<<<<< Updated upstream
     const login = () => {
         console.log({ loginID, loginPassword });
 
+=======
+    const login = async (e) => {
+>>>>>>> Stashed changes
         if (loginID === '') {
             alert('아이디를 입력해주세요.');
         } else if (loginPassword === '') {
             alert('비밀번호를 입력해주세요.');
         } else if (true /* login success */) {
+<<<<<<< Updated upstream
             dispatch(setUser({ name: 'username' }));
             navigate('/drons');
+=======
+            console.log({ loginID, loginPassword });
+            e.preventDefault();
+            await axios
+                .all([
+                    axios.post(baseUrl + '/api/auth', {
+                        id: loginID,
+                        pwd: loginPassword,
+                    }),
+                    axios.get(baseUrl + '/api/auth/' + loginID),
+                ])
+                .then(
+                    axios.spread((response, getUser) => {
+                        if (response.data == 1) {
+                            console.log(getUser.data);
+                            setUuid(getUser.data.uuid);
+                            setPermission(getUser.data.permission);
+                            setImg(getUser.data.img);
+                            dispatch(setUser({ name: 'username' }));
+                            navigate('/drons', {
+                                state: {
+                                    uuid: uuid,
+                                    permission: permission,
+                                    id: loginID,
+                                    pwd: loginPassword,
+                                    img: img,
+                                },
+                            });
+                        } else if (response.data == 0) {
+                            alert('없는 아이디입니다.');
+                        } else {
+                            alert('비밀번호가 틀립니다.');
+                        }
+                    })
+                )
+                .catch((error) => {
+                    console.log(error);
+                });
+>>>>>>> Stashed changes
         }
     };
 
