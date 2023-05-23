@@ -1,61 +1,104 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from "axios";
 
-const BlogPostDetailWrapper = styled.div`
+const BlogPostFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   text-align: center;
+  justify-content: center;
+  width : 100%
 `;
 
-const BlogPostTitle = styled.h2`
-  font-size: 24px;
-  margin-bottom: 10px;
+const TitleInput = styled.input`
+  width: 100%;
+  max-width: 600px;
+  height: 38px;
+  margin-bottom: 20px;
+  font-size: 27px;
+  text-transform: capitalize;
+
+  @media screen and (max-width: 300px) {
+    font-size: 20px;
+    height: 30px;
+  }
 `;
 
-const BlogPostContent = styled.p`
+const ContentTextArea = styled.textarea`
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  margin-bottom: 20px;
   font-size: 15px;
-  line-height: 1.5;
+
+  @media screen and (max-width: 300px) {
+    height: 150px;
+  }
 `;
 
-const BlogPostDetailPage = () => {
-  const baseUrl = "http://localhost:8083";
-  const { uid } = useParams();
-  const [Notice, setNotice] = useState([]);
+const SubmitButton = styled.button`
+  width: 163px;
+  height: 45px;
+  background-color: #00AAA1;
+  color: #FFFFFF;
+  font-size: 15px;
 
-  useEffect(() => {
-    // 서버에서 개별 포스팅 데이터 가져오는 API 호출
-    getNotice();
-  }, []);
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
-  async function getNotice() {
-    console.log(uid);
+const BlogPostForm = () => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
-    await axios
-      .get(baseUrl + "/api/notice/"+uid)
-      .then((response)=>{
-          console.log(response.data);
-          setNotice(response.data);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // 포스팅을 서버로 전송하는 API 호출
+    const data = { title, content };
+    fetch('api/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        // 성공적으로 포스팅이 생성된 경우, 상태 초기화
+        setTitle('');
+        setContent('');
+        console.log('포스팅이 생성되었습니다:', responseData);
       })
-      .catch((error)=>{
-          console.log(error);
-      });  
-  }
-
-  if (!post) {
-    return <div>Loading...</div>;
-  }
+      .catch(error => console.error(error));
+  };
 
   return (
-    <BlogPostDetailWrapper>
-      <h2>asdf</h2>
-      <BlogPostTitle>{Notice.title}</BlogPostTitle>
-      <BlogPostContent>{Notice.content}</BlogPostContent>
-    </BlogPostDetailWrapper>
+    <BlogPostFormWrapper>
+      <h2>공지 글 쓰기</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <div><label htmlFor="title">제목:</label></div>   
+          <TitleInput
+            type="text"
+            id="title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+        </div>
+        <div>
+          <div><label htmlFor="content">내용:</label></div>          
+          <ContentTextArea
+            id="content"
+            value={content}
+            onChange={e => setContent(e.target.value)}
+          />
+        </div>
+        <SubmitButton type="submit">확인</SubmitButton>
+      </form>
+    </BlogPostFormWrapper>
   );
 };
 
-export default BlogPostDetailPage;
+export default BlogPostForm;
