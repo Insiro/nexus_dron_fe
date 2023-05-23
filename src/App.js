@@ -39,7 +39,7 @@ function App() {
                     <Route>
                         <Route path="/notice" element={<Notice />} />
                         <Route path="/notice/new" element={<NewNotice />} />
-                        <Route path="/notice:id" element={<NoticeId />} />
+                        <Route path="/notice/:id" element={<NoticeId />} />
                     </Route>
                 </Routes>
             </Provider>

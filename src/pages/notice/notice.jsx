@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from "axios";
 
@@ -38,17 +38,18 @@ const BlogPostContent = styled.p`
 const BlogPostPage = () => {
   const baseUrl = "http://localhost:8083";
   const [Notices, setNotices] = useState([]);
+  const nevigate = useNavigate();
 
   useEffect(() => {
     // 서버에서 개별 포스팅 데이터 가져오는 API 호출
-    getNotice();
+    getNotices();
   }, []);
 
   if (!Notices) {
     return <div>Loading...</div>;
   }
 
-  async function getNotice(){
+  async function getNotices(){
     await axios
       .get(baseUrl + "/api/notice")
       .then((response)=>{
@@ -60,19 +61,14 @@ const BlogPostPage = () => {
       });  
   }
 
-  // useEffect(() => {
-  //   // 서버에서 포스팅 데이터 가져오는 API 호출
-  //   fetch('api/posts')
-  //     .then(response => response.json())
-  //     .then(responseData => {
-  //       setPosts(responseData);
-  //     })
-  //     .catch(error => console.error(error));
-  // }, []);
+  const handleNewPostClick = () => {
+    nevigate('/notice/new'); // 새로운 공지글 작성 페이지로 이동
+  };
 
   return (
     <BlogPostsWrapper>
       <h2>블로그 글 목록</h2>
+      <button onClick={handleNewPostClick}>새로운 공지글 작성</button> {/* 새로운 공지글 작성 버튼 */}
       {Notices.map(Notice => (
         <BlogPost key={Notice.id}>
           <BlogPostTitle to={`/notice/${Notice.uid}`}>{Notice.title}</BlogPostTitle>

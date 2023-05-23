@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from "axios";
 
 const BlogPostDetailWrapper = styled.div`
   display: flex;
@@ -22,7 +23,6 @@ const BlogPostContent = styled.p`
 
 const BlogPostDetailPage = () => {
   const baseUrl = "http://localhost:8083";
-  const { id } = useParams();
   const [Notice, setNotice] = useState(null);
 
   useEffect(() => {
@@ -35,10 +35,14 @@ const BlogPostDetailPage = () => {
   }
 
   async function getNotice(){
+    const path = window.location.pathname;
+    const lastPart = path.substring(path.lastIndexOf('/')+1);
+    console.log(lastPart);
     await axios
-      .get(baseUrl + "/notice")
+      .get(baseUrl + "/api/notice/"+lastPart)
       .then((response)=>{
           console.log(response.data);
+          setNotice(response.data);
       })
       .catch((error)=>{
           console.log(error);

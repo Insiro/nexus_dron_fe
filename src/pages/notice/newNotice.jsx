@@ -32,7 +32,7 @@ const BlogPostDetailPage = () => {
   }, []);
 
   async function getNotice() {
-    console.log(currentURL);
+    console.log(uid);
 
     await axios
       .get(baseUrl + "/api/notice/"+uid)
@@ -51,6 +51,7 @@ const BlogPostDetailPage = () => {
 
   return (
     <BlogPostDetailWrapper>
+      <h2>asdf</h2>
       <BlogPostTitle>{Notice.title}</BlogPostTitle>
       <BlogPostContent>{Notice.content}</BlogPostContent>
     </BlogPostDetailWrapper>
