@@ -15,7 +15,6 @@ import { EditDron } from './pages/editDron';
 import NewNotice from './pages/notice/newNotice'
 import Notice from './pages/notice/notice'
 import NoticeId from './pages/notice/noticeFile'
-import EditNotice from './pages/notice/editNotice'
 
 const RootRedirector = () => {
     const user = useSelector((state) => state.user.name);
@@ -25,7 +24,7 @@ function App() {
     return (
         <BrowserRouter>
             <Provider store={store}>
-                <Routes>
+                <Routes> 
                     <Route path="/" element={<RootRedirector />} />
                     <Route path="/auth" element={<CenterLayout />}>
                         <Route path="/auth" element={<Login />} />
@@ -41,7 +40,6 @@ function App() {
                         <Route path="/notice" element={<Notice />} />
                         <Route path="/notice/new" element={<NewNotice />} />
                         <Route path="/notice/:id" element={<NoticeId />} />
-                        <Route path="/notice/edit/:id" element={<EditNotice />} />
                     </Route>
                 </Routes>
             </Provider>
