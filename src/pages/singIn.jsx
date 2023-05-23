@@ -12,18 +12,12 @@ import { setUser } from '../stores/userReducer';
 function LoginComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-<<<<<<< Updated upstream
-
-    const [loginID, setLoginID] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
-=======
     const baseUrl = 'http://localhost:8081';
     const [loginID, setLoginID] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [img, setImg] = useState('');
     const [uuid, setUuid] = useState('');
     const [permission, setPermission] = useState('');
->>>>>>> Stashed changes
     const [passwordInputType, setPasswordInputType] = useState({
         type: 'password',
         autoComplete: 'current-password',
@@ -53,22 +47,12 @@ function LoginComponent() {
         return;
     };
 
-<<<<<<< Updated upstream
-    const login = () => {
-        console.log({ loginID, loginPassword });
-
-=======
     const login = async (e) => {
->>>>>>> Stashed changes
         if (loginID === '') {
             alert('아이디를 입력해주세요.');
         } else if (loginPassword === '') {
             alert('비밀번호를 입력해주세요.');
         } else if (true /* login success */) {
-<<<<<<< Updated upstream
-            dispatch(setUser({ name: 'username' }));
-            navigate('/drons');
-=======
             console.log({ loginID, loginPassword });
             e.preventDefault();
             await axios
@@ -106,7 +90,6 @@ function LoginComponent() {
                 .catch((error) => {
                     console.log(error);
                 });
->>>>>>> Stashed changes
         }
     };
 
