@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom'
 
 const BlogPostFormWrapper = styled.div`
   display: flex;
@@ -50,36 +52,34 @@ const SubmitButton = styled.button`
 `;
 
 const BlogPostForm = () => {
+  const baseUrl = "http://localhost:8083";
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const nevigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // 포스팅을 서버로 전송하는 API 호출
-    const data = { title, content };
-    fetch('api/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(response => response.json())
-      .then(responseData => {
-        // 성공적으로 포스팅이 생성된 경우, 상태 초기화
-        setTitle('');
-        setContent('');
-        console.log('포스팅이 생성되었습니다:', responseData);
+
+    await axios
+      .put(baseUrl + '/api/newNotice', {
+        title: title,
+        content: content,
       })
-      .catch(error => console.error(error));
-  };
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    nevigate('/notice');
+  }
 
   return (
     <BlogPostFormWrapper>
       <h2>공지 글 쓰기</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <div><label htmlFor="title">제목:</label></div>   
+          <div><label htmlFor="title">제목:</label></div>
           <TitleInput
             type="text"
             id="title"
@@ -88,7 +88,7 @@ const BlogPostForm = () => {
           />
         </div>
         <div>
-          <div><label htmlFor="content">내용:</label></div>          
+          <div><label htmlFor="content">내용:</label></div>
           <ContentTextArea
             id="content"
             value={content}
