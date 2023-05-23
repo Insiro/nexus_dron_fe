@@ -5,7 +5,7 @@ import { Table, TableHeader, TableRow } from '../../components/table';
 const CardRow = ({ id, msg }) => {
     const nevigate = useNavigate();
     const onClicked = () => {
-        nevigate('/drons/' + id);//여기 경로 수정해주기
+        nevigate('/notice');//여기 경로 수정해주기
     };
     return (
         <TableRow onClick={onClicked}>

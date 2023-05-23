@@ -12,6 +12,10 @@ import { NewDron } from './pages/newDron';
 import { Main } from './pages/main';
 import UserInfo from './pages/userinfo';
 import { EditDron } from './pages/editDron';
+import NewNotice from './pages/notice/newNotice'
+import Notice from './pages/notice/notice'
+import NoticeId from './pages/notice/noticeFile'
+
 const RootRedirector = () => {
     const user = useSelector((state) => state.user.name);
     return <Navigate to={user ? '/drons' : '/auth'} replace />;
@@ -20,7 +24,7 @@ function App() {
     return (
         <BrowserRouter>
             <Provider store={store}>
-                <Routes>
+                <Routes> 
                     <Route path="/" element={<RootRedirector />} />
                     <Route path="/auth" element={<CenterLayout />}>
                         <Route path="/auth" element={<Login />} />
@@ -31,7 +35,11 @@ function App() {
                         <Route path="/drons" element={<Main />} />
                         <Route path="/drons/new" element={<NewDron />} />
                         <Route path="/drons:id" element={<Drons />} />
-                        <Route path="/drons/Edit/:id" element={<EditDron />} />
+                    </Route>
+                    <Route>
+                        <Route path="/notice" element={<Notice />} />
+                        <Route path="/notice/new" element={<NewNotice />} />
+                        <Route path="/notice:id" element={<NoticeId />} />
                     </Route>
                 </Routes>
             </Provider>
