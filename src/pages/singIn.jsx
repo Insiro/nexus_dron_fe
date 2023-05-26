@@ -54,43 +54,52 @@ function LoginComponent() {
         } else if (loginPassword === '') {
             alert('비밀번호를 입력해주세요.');
         } else if (true /* login success */) {
-            console.log({ loginID, loginPassword });
-            e.preventDefault();
-            await axios
-                .all([
-                    axios.post(baseUrl + '/api/auth', {
-                        id: loginID,
-                        pwd: loginPassword,
-                    }),
-                    axios.get(baseUrl + '/api/auth/' + loginID),
-                ])
-                .then(
-                    axios.spread((response, getUser) => {
-                        if (response.data == 1) {
-                            console.log(getUser.data);
-                            setUuid(getUser.data.uuid);
-                            setPermission(getUser.data.permission);
-                            setImg(getUser.data.img);
-                            dispatch(setUser({ name: 'username' }));
-                            navigate('/drons', {
-                                state: {
-                                    uuid: uuid,
-                                    permission: permission,
-                                    id: loginID,
-                                    pwd: loginPassword,
-                                    img: img,
-                                },
-                            });
-                        } else if (response.data == 0) {
-                            alert('없는 아이디입니다.');
-                        } else {
-                            alert('비밀번호가 틀립니다.');
-                        }
-                    })
-                )
-                .catch((error) => {
-                    console.log(error);
-                });
+            navigate('/drons', {
+                state: {
+                    uuid: uuid,
+                    permission: permission,
+                    id: loginID,
+                    pwd: loginPassword,
+                    img: img,
+                },
+            })
+        //     console.log({ loginID, loginPassword });
+        //     e.preventDefault();
+        //     await axios
+        //         .all([
+        //             axios.post(baseUrl + '/api/auth', {
+        //                 id: loginID,
+        //                 pwd: loginPassword,
+        //             }),
+        //             axios.get(baseUrl + '/api/auth/' + loginID),
+        //         ])
+        //         .then(
+        //             axios.spread((response, getUser) => {
+        //                 if (response.data == 1) {
+        //                     console.log(getUser.data);
+        //                     setUuid(getUser.data.uuid);
+        //                     setPermission(getUser.data.permission);
+        //                     setImg(getUser.data.img);
+        //                     dispatch(setUser({ name: 'username' }));
+        //                     navigate('/drons', {
+        //                         state: {
+        //                             uuid: uuid,
+        //                             permission: permission,
+        //                             id: loginID,
+        //                             pwd: loginPassword,
+        //                             img: img,
+        //                         },
+        //                     });
+        //                 } else if (response.data == 0) {
+        //                     alert('없는 아이디입니다.');
+        //                 } else {
+        //                     alert('비밀번호가 틀립니다.');
+        //                 }
+        //             })
+        //         )
+        //         .catch((error) => {
+        //             console.log(error);
+        //         });
         }
     };
 
