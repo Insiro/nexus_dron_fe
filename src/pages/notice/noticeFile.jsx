@@ -49,7 +49,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const BlogPostDetailPage = () => {
-  const baseUrl = "http://localhost:8083";
+  const baseUrl = "http://localhost:18030";
   const [Notice, setNotice] = useState(null);
   const [showModifyPostButton, setShowModifyPostButton] = useState(true); // 공지글 수정 버튼을 보여줄지 여부를 상태로 관리
   const navigate = useNavigate();

@@ -38,7 +38,7 @@ const BlogPostContent = styled.p`
 `;
 
 const BlogPostPage = () => {
-  const baseUrl = 'http://localhost:8083';
+  const baseUrl = 'http://localhost:18030';
   const [notices, setNotices] = useState([]);
   const navigate = useNavigate();
   const [showNewPostButton, setShowNewPostButton] = useState(true); // 새로운 공지글 작성 버튼을 보여줄지 여부를 상태로 관리

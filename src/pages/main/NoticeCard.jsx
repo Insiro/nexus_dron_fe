@@ -30,7 +30,7 @@ const CardRow = ({ uid, msg }) => {
 };
 
 export const NoticeCard = () => {
-    const baseUrl = "http://localhost:8083";
+    const baseUrl = "http://localhost:18030";
     const [notices, setNotices] = useState([]);
 
     useEffect(() => {

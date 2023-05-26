@@ -52,7 +52,7 @@ const SubmitButton = styled.button`
 `;
 
 const BlogPostForm = () => {
-    const baseUrl = "http://localhost:8083";
+    const baseUrl = "http://localhost:18030";
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const nevigate = useNavigate();
