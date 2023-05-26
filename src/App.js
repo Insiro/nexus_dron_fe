@@ -11,6 +11,7 @@ import { Drons } from './pages/drons';
 import { NewDron } from './pages/newDron';
 import { Main } from './pages/main';
 import UserInfo from './pages/userinfo';
+import UserPage from './pages/userPage';
 import { EditDron } from './pages/editDron';
 import NewNotice from './pages/notice/newNotice'
 import Notice from './pages/notice/notice'
@@ -33,6 +34,7 @@ function App() {
                     </Route>
                     <Route path="/drons" element={<NormalLayout />}>
                         <Route path="/drons/userinfo" element={<UserInfo />} />
+                        <Route path="/drons/userlist" element={<UserPage/>}/>
                         <Route path="/drons" element={<Main />} />
                         <Route path="/drons/new" element={<NewDron />} />
                         <Route path="/drons:id" element={<Drons />} />

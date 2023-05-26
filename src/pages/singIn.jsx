@@ -9,6 +9,7 @@ import {
 } from '../components/LoginBox';
 import { StyledButton } from '../components/button';
 import { setUser } from '../stores/userReducer';
+import axios from 'axios';
 function LoginComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();

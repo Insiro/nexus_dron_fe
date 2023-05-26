@@ -8,9 +8,15 @@ import {
 } from '../components/LoginBox';
 import { StyledButton } from '../components/button';
 function ChangeingUserInfo() {
+    const baseUrl = "http://localhost:8081"
     const [userImage, setUserImage]=useState('');
     const [userID, setUserID] = useState('');
     const [userPassword, setUserPassword] = useState('');
+    const [passwordInputType, setPasswordInputType] = useState({
+        type: 'password',
+        autoComplete: 'current-password',
+    });
+    const navigate= useNavigate();
     const dataRuleCheckForID = (ch) => {
         let ascii = ch.charCodeAt(0);
         if (48 /* 0 */ <= ascii && ascii <= 57 /* 9 */) return true;
@@ -45,6 +51,21 @@ function ChangeingUserInfo() {
             };
         });
     }
+    const Change = async(e)=>{
+        e.preventDefault();
+        await axios.put(baseUrl + "/api/user/", {
+            id: userID,
+            pwd: userPassword,
+            img: userImage,
+          })
+          .then((response) => {
+            if(response.data==1){alert("수정 완료")}
+          })
+          .catch((error) => {
+            console.log(error);    
+          });
+        navigate("/drons");
+    }
     return (
         <BackGround className="backGround">
         <CardWrapper>
@@ -75,9 +96,7 @@ function ChangeingUserInfo() {
                 <input type="file" accept="image/*" onChange={onUpload}/>
                 <img width={'100%'} src={userImage}/>
                 <br />
-                <Link to="/drons">
-                    <StyledButton>수정</StyledButton>
-                </Link>
+                <StyledButton onClick={Change}>수정</StyledButton>
             </CardItem>
         </CardWrapper>
     </BackGround>
